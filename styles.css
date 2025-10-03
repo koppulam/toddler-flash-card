@@ -504,6 +504,319 @@ html, body {
   }
 }
 
+/* Puzzle Styles */
+.puzzle-controls {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.puzzle-game-area {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.puzzle-area, .pieces-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.puzzle-section-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: var(--text);
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.puzzle-container {
+  display: grid;
+  border: 3px solid var(--text);
+  border-radius: 0px;
+  box-shadow: var(--shadow);
+  background: var(--card);
+  position: relative;
+  overflow: visible;
+  min-width: fit-content;
+  min-height: fit-content;
+}
+
+.pieces-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 25px;
+  border: 3px solid var(--secondary);
+  border-radius: 20px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  min-width: 350px;
+  min-height: 250px;
+  align-content: flex-start;
+  justify-content: center;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.puzzle-piece {
+  width: var(--piece-size);
+  height: var(--piece-size);
+  background-size: var(--puzzle-width) var(--puzzle-height);
+  cursor: grab;
+  border: 2px solid var(--text);
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  min-width: 60px;
+  min-height: 60px;
+  outline: none;
+}
+
+.puzzle-piece:focus {
+  outline: none;
+  box-shadow: var(--shadow);
+}
+
+.puzzle-piece:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+}
+
+.puzzle-piece:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+.puzzle-piece.dragging {
+  cursor: grabbing;
+  z-index: 1000;
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.6);
+  transform: scale(1.05);
+}
+
+.puzzle-piece.placed {
+  cursor: default;
+  border: none !important;
+  border-radius: 0 !important;
+  transform: none;
+  box-shadow: none;
+  background-size: var(--puzzle-width) var(--puzzle-height);
+}
+
+.grid-slot {
+  border: 2px dashed var(--text);
+  background: rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.grid-slot:hover {
+  background: rgba(255, 215, 61, 0.2);
+}
+
+/* Responsive Puzzle Styles */
+@media (max-width: 768px) {
+  .puzzle-game-area {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  
+  .puzzle-container {
+    max-width: 95vw;
+    max-height: 70vh;
+    overflow: visible;
+  }
+  
+  .pieces-container {
+    min-width: 250px;
+    min-height: 150px;
+    padding: 15px;
+    gap: 6px;
+  }
+  
+  .puzzle-section-title {
+    font-size: 1rem;
+  }
+  
+  .puzzle-controls {
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .puzzle-container {
+    max-width: 98vw;
+    max-height: 60vh;
+    overflow: visible;
+  }
+  
+  .pieces-container {
+    min-width: 200px;
+    min-height: 120px;
+    padding: 10px;
+    gap: 4px;
+  }
+  
+  .puzzle-controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+/* Success Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.modal-show {
+  opacity: 1;
+}
+
+.modal-content {
+  background: var(--card);
+  border: 3px solid var(--text);
+  border-radius: 25px;
+  padding: 0;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: var(--shadow-hover);
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.modal-show .modal-content {
+  transform: scale(1);
+}
+
+.modal-header {
+  background: var(--brand);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 22px 22px 0 0;
+  text-align: center;
+}
+
+.modal-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.modal-body {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.modal-message {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--text);
+  margin: 0 0 1.5rem 0;
+}
+
+.modal-celebration {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.celebration-emoji {
+  font-size: 2rem;
+  animation: celebrationBounce 1s infinite;
+}
+
+.celebration-emoji:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.celebration-emoji:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.celebration-emoji:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@keyframes celebrationBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.modal-footer {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  justify-content: center;
+}
+
+.modal-btn {
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--text);
+  border-radius: 15px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+  min-width: 120px;
+}
+
+.modal-btn.primary {
+  background: var(--brand);
+  color: white;
+}
+
+.modal-btn.secondary {
+  background: var(--secondary);
+  color: var(--text);
+}
+
+.modal-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.modal-btn:active {
+  transform: scale(0.95) translateY(-1px);
+  transition: transform 0.1s ease;
+}
+
 /* Touch-friendly hover states for mobile */
 @media (hover: none) and (pointer: coarse) {
   .main-btn:hover,
@@ -511,8 +824,11 @@ html, body {
   .family-btn:hover,
   .flashcard:hover,
   .back-btn:hover,
-  .nav-link:hover {
+  .nav-link:hover,
+  .puzzle-piece:hover,
+  .modal-btn:hover {
     transform: none;
+    box-shadow: none;
   }
   
   .main-btn:active {
@@ -541,6 +857,11 @@ html, body {
   }
   
   .nav-link:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+  
+  .modal-btn:active {
     transform: scale(0.95);
     transition: transform 0.1s ease;
   }
