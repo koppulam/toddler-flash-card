@@ -1,0 +1,26 @@
+{
+  "name": "kiddo-flashcards",
+  "version": "1.0.0",
+  "description": "Interactive flashcards for learning to read with word families and CVC words",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "start": "python -m http.server 8000",
+    "build": "echo 'No build step needed for static files'"
+  },
+  "keywords": [
+    "flashcards",
+    "education",
+    "children",
+    "reading",
+    "pwa",
+    "learning"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/kiddo-flashcards.git"
+  },
+  "homepage": "https://kiddo-flashcards.vercel.app"
+}
