@@ -370,13 +370,11 @@ function setupDeckInteractions() {
   function nextCard() {
     state.currentIndex = (state.currentIndex + 1) % state.currentDeck.length;
     showCard();
-    speak(flashText.textContent);
   }
   
   function prevCard() {
     state.currentIndex = (state.currentIndex - 1 + state.currentDeck.length) % state.currentDeck.length;
     showCard();
-    speak(flashText.textContent);
   }
   
   function reshuffleDeck() {
