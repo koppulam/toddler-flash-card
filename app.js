@@ -242,14 +242,12 @@ function viewPuzzle() {
         
         <div class="puzzle-game-area">
           <div class="puzzle-area">
-            <h3 class="puzzle-section-title">Puzzle Area</h3>
             <div id="puzzle-container" class="puzzle-container">
               <!-- Puzzle grid will go here -->
             </div>
           </div>
           
           <div class="pieces-area">
-            <h3 class="puzzle-section-title">Puzzle Pieces</h3>
             <div id="pieces-container" class="pieces-container">
               <!-- Puzzle pieces will go here -->
             </div>
